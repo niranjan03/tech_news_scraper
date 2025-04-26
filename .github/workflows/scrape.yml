@@ -1,0 +1,13 @@
+name: Scheduled Scraping
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'  # Every 10 minutes
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - run: pip install -r requirements.txt
+    - run: python app/run_scraper.py

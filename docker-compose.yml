@@ -1,0 +1,9 @@
+services:
+  scraper:
+    build: .
+    command: >
+      sh -c "while true; do
+        python -c 'from app.services.scraper import NewsScraper; NewsScraper.scrape_all()';
+        sleep 600;
+      done"
+    restart: unless-stopped
