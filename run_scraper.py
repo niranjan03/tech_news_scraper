@@ -26,7 +26,10 @@ def run_scraper():
             
             duration = (datetime.now() - start_time).total_seconds()
             logging.info(f"✅ Completed in {duration:.2f} seconds")
-            
+            logging.info("🗞️ Articles scraped and saved to the database")
+            logging.info("🔄 Committing changes to the database")
+            db.session.commit()
+
         except Exception as e:
             logging.error(f"🔥 Scraping failed: {str(e)}")
             db.session.rollback()
